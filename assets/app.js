@@ -1,5 +1,5 @@
-/* Orbit 2.0 — core: state, shell, theme, palette, home, combos, library.
-   Plain JS, zero dependencies, everything stored locally. No sign-in. */
+/* Orbit 2.1 — core: state, shell, theme, palette, home, combos, library.
+   Plain-JS, local-first study app with optional separately verified Google identity. */
 'use strict';
 const paths={home:'index.html',combos:'combos.html',materials:'materials.html',tests:'tests.html',flashcards:'flashcards.html',formulas:'formulas.html',planner:'planner.html',progress:'progress.html',bookmarks:'bookmarks.html'};
 const names={home:'Overview',combos:'Study combos',materials:'Study materials',tests:'Practice tests',flashcards:'Flashcards',formulas:'Formula sheets',planner:'Study planner',progress:'My progress',bookmarks:'Bookmarks'};
@@ -107,7 +107,7 @@ function toggleTheme(){state.theme=state.theme==='dark'?'light':'dark';save();ap
 function setTrack(t){try{if(typeof activeQuiz!=='undefined'&&activeQuiz){toast('Finish your current test before switching tracks.');return;}}catch(e){}state.track=t;filter='All subjects';save();render();}
 function trackToggle(){return `<div class="track-toggle" role="group" aria-label="Exam track">${['NEET','JEE'].map(t=>`<button class="${state.track===t?'active':''}" aria-pressed="${state.track===t}" onclick="setTrack('${t}')">${t}</button>`).join('')}</div>`;}
 function title(eyebrow,heading,sub,extra=''){return `<div class="page-title"><div><div class="eyebrow">${eyebrow}</div><h1>${heading}</h1><p class="subtitle">${sub}</p></div><div class="title-extra">${extra}</div></div>`;}
-function footer(){return `<footer class="footer"><span>${icon('heart')} Made for your journey, not just your destination.</span><span>No sign-in · No tracking · Works offline &nbsp;✦</span></footer>`;}
+function footer(){return `<footer class="footer"><span>${icon('heart')} Made for your journey, not just your destination.</span><span>Local-first · No tracking · Study offline &nbsp;✦</span></footer>`;}
 function dueCount(){try{if(typeof buildDeck==='function'){const t=today();return buildDeck().filter(c=>{const f=state.flash[c.id];return !f||(f.due||'')<=t;}).length;}}catch(e){}return 0;}
 function activeQuizInfo(){try{const raw=localStorage.getItem('orbit-quiz-v2');if(!raw)return null;const q=JSON.parse(raw);return q&&q.questions?{left:Math.max(0,Math.ceil((q.deadline-Date.now())/1000)),quiz:q}:null;}catch(e){return null;}}
 /* ---------- shell ---------- */
@@ -121,13 +121,13 @@ function shell(){
   <div class="nav-label">YOUR WORKSPACE</div>
   <nav>${nav.map(([p,i,l,b])=>`<a href="${paths[p]}" class="${p===page?'active':''}" ${p===page?'aria-current="page"':''}>${icon(i)}${l}${b||''}</a>`).join('')}</nav>
   <div class="side-bottom"><div class="side-note">${icon('spark')}<b>Big dreams. Small steps.</b><p>You don’t have to do it all today.<br>Just a little better than yesterday.</p><a href="combos.html">Browse 150 combos ${icon('arrow')}</a></div>
-  <div class="profile"><div class="avatar">S</div><div><strong>${state.track} track</strong><small>Private · on this device</small></div></div></div></aside>
+  <div class="profile" id="sidebar-profile"><div class="avatar">${state.track==='JEE'?'J':'N'}</div><div><strong>${state.track} track</strong><small>Private · on this device</small></div></div></div></aside>
   <div class="app"><header class="topbar"><button class="mobile-menu" onclick="toggleMenu()" aria-label="Open navigation">${icon('menu')}</button>
   <div class="crumb">Workspace <span>/ &nbsp; ${names[page]}</span></div>
   <div class="top-actions"><button class="top-search" onclick="openPalette()" aria-label="Search everything">${icon('search')}<span>Search chapters, guides, combos…</span><span class="key">/</span></button>
   <button class="icon-btn" onclick="toggleTheme()" aria-label="Toggle dark mode">${icon(state.theme==='dark'?'sun':'moon')}</button>
   <button class="notification" onclick="showUpdates()" aria-label="Workspace updates">${icon('bell')}</button>
-  <div class="avatar" style="width:30px;height:30px;font-size:11px">S</div></div></header>
+  <div id="auth-control" class="auth-control" aria-live="polite"><span class="auth-loading">Account</span></div></div></header>
   <main class="main" id="content"></main></div><div id="modal-root"></div>`;
   render();
   if(!storageWorks)toast('Storage is unavailable; progress stays in this session only.');
@@ -175,7 +175,7 @@ function home(){
   const quote=QUOTES[new Date().getDate()%QUOTES.length];
   return title(date,`Good ${hour<12?'morning':hour<17?'afternoon':'evening'}, learner <span class="wave">☀</span>`,`Your dreams are worth the effort. Let’s make today count.`,trackToggle())
   +resumeBanner()
-  +`<section class="hero"><div class="hero-copy"><span class="badge">${icon('spark')} 150 STUDY COMBINATIONS · NO SIGN-IN</span>
+  +`<section class="hero"><div class="hero-copy"><span class="badge">${icon('spark')} 150 STUDY COMBINATIONS · YOUR PACE</span>
   <h2>A little progress, every day.<br>A big difference, one day.</h2>
   <p>${bankCount()} practice questions · 50 chapter guides · flashcards · mocks — all on this device, all free.</p>
   <div class="hero-cta"><a href="combos.html" class="btn">Browse 150 combos ${icon('arrow')}</a><button class="btn light" onclick="startDaily10()">Daily 10 · 15 min</button></div>
