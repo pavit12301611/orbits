@@ -394,3 +394,91 @@ html[data-theme="dark"] .toast{background:#2c463c}
   .app{margin:0}body{background:#fff;color:#111}
   .formula-card,.material-card{break-inside:avoid}
 }
+
+/* Orbit 2.1 — polished interaction layer and optional Google identity controls. */
+:root{
+  --bg:#f4f6f1;--paper:#fff;--soft:#f8faf6;--light:#eaf0e7;--line:#e1e7de;
+  --green:#1d493b;--green-2:#2f604e;--text:#20382f;--muted:#75827a;
+  --shadow:0 10px 28px #1a3f3510;--radius:14px;
+}
+html[data-theme="dark"]{
+  --bg:#0d1511;--paper:#151f19;--soft:#111a15;--light:#1d2b22;--line:#2a3930;
+  --green:#9fc6aa;--green-2:#c2ddc9;--text:#e8f0e9;--muted:#9baa9f;
+  --shadow:0 12px 32px #0005;
+}
+body{font-size:14px;line-height:1.55;letter-spacing:.005em}
+.sidebar{width:250px;padding:30px 20px 22px;box-shadow:3px 0 24px #142d2206}
+.app{margin-left:250px}
+.brand{font-size:30px}
+.workspace{border-radius:12px;padding:13px;margin-top:26px}
+nav a{padding:12px 13px;transition:background .18s,color .18s,transform .18s}
+nav a:hover:not(.active){transform:translateX(2px)}
+.topbar{min-height:72px;padding-inline:clamp(18px,3vw,42px);backdrop-filter:blur(14px);background:color-mix(in srgb,var(--paper) 92%,transparent)}
+.main{padding:clamp(24px,3vw,42px);max-width:1660px}
+.page-title{margin-bottom:27px}
+.eyebrow{letter-spacing:2px}
+h1{font-size:clamp(25px,2vw,34px);letter-spacing:-1.15px}
+.hero{min-height:250px;border-radius:20px;margin-bottom:24px;background:radial-gradient(ellipse at 82% 20%,#d7e3ce 0,transparent 40%),linear-gradient(120deg,var(--light),var(--paper));box-shadow:var(--shadow)}
+html[data-theme="dark"] .hero{background:radial-gradient(ellipse at 82% 20%,#263b2c 0,transparent 42%),linear-gradient(120deg,#1a2a20,#151f19)}
+.hero-copy{padding:34px 38px}
+.hero h2{font-size:clamp(29px,3vw,40px);line-height:1.15;letter-spacing:-1.6px;max-width:650px}
+.hero p{font-size:13px;max-width:580px}
+.badge{border:1px solid color-mix(in srgb,var(--good) 20%,transparent);border-radius:99px;padding:7px 12px}
+.btn{min-height:42px;border-radius:9px;padding-inline:17px;font-size:12px;font-weight:650;transition:transform .16s,box-shadow .16s,filter .16s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px #183b3522}
+.btn:active{transform:translateY(0)}
+.stats{gap:16px}
+.stat,.subject-card,.panel,.material-card,.test-card,.combo-card,.formula-card,.mission,.practice-card{border-radius:14px;box-shadow:var(--shadow);transition:transform .18s,border-color .18s,box-shadow .18s}
+.stat:hover,.material-card:hover,.test-card:hover,.formula-card:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--good) 42%,var(--line));box-shadow:0 14px 32px #183b3516}
+.stat{padding:19px}
+.stat-value{font-size:29px}
+.section-head{margin-bottom:17px}
+.subject-card{padding:21px 18px 16px}
+.subject-icon{border-radius:11px}
+.practice-card{padding:20px 22px}
+.panel{padding:21px}
+.filters{gap:9px}
+.filter{border-radius:99px;transition:background .16s,border-color .16s,transform .16s}
+.filter:hover{transform:translateY(-1px);border-color:var(--good)}
+.combo-card{min-height:250px;padding:20px}
+.material-card,.test-card,.formula-card{padding:24px}
+.grand{border-radius:12px;transition:transform .18s,border-color .18s,box-shadow .18s}
+.grand:hover{border-color:color-mix(in srgb,var(--good) 45%,var(--line))}
+.question-box{border-radius:16px;box-shadow:var(--shadow)}
+.answer{transition:transform .14s,border-color .14s,background .14s}
+.answer:hover:not(:disabled){transform:translateX(3px);border-color:var(--good)}
+.flash-face{border-radius:18px;box-shadow:var(--shadow)}
+input,select{border-radius:10px;min-height:42px}
+:focus-visible{scroll-margin:100px}
+.auth-control{display:flex;align-items:center;justify-content:center;min-width:176px;min-height:40px}
+.auth-status{font-size:10px;color:var(--muted);white-space:nowrap;border:1px solid var(--line);padding:8px 10px;border-radius:99px;background:var(--soft)}
+.auth-loading{font-size:10px;color:var(--muted)}
+.auth-account{display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--soft);border-radius:99px;padding:4px 11px 4px 5px;max-width:210px;min-height:40px;color:var(--text);font-size:11px;font-weight:650}
+.auth-account:hover{border-color:var(--good);background:var(--light)}
+.auth-account-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:130px}
+.auth-avatar{width:29px;height:29px;border-radius:50%;object-fit:cover;flex:0 0 auto;background:var(--light)}
+.auth-initial{display:grid;place-items:center;color:var(--green);font-size:12px;font-weight:700}
+.sidebar .auth-avatar.avatar{width:35px;height:35px}
+.profile{min-width:0}.profile>div:last-child{min-width:0}.profile strong{max-width:148px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.toast{border-radius:12px;box-shadow:0 14px 36px #10281f40;padding:13px 19px}
+@media(max-width:1150px){
+  .sidebar{width:220px;padding-inline:16px}.app{margin-left:220px}
+  .auth-control{min-width:155px}
+}
+@media(max-width:720px){
+  .sidebar{width:250px}.app{margin-left:0}
+  .topbar{padding-inline:13px;gap:9px}.top-actions{gap:8px}
+  .auth-control{min-width:0;max-width:142px;overflow:hidden}
+  .auth-account{max-width:112px;padding-right:7px}.auth-account-name{max-width:66px}
+  .auth-status{max-width:105px;white-space:normal;text-align:center;padding:5px 7px;font-size:9px}
+  .notification{display:none}
+  #google-signin-button{transform:scale(.82);transform-origin:right center;width:145px}
+  .hero{border-radius:16px}.hero-copy{padding:23px}
+  .hero h2{font-size:27px}.hero p{font-size:11px}
+  .stat,.subject-card,.material-card,.test-card,.combo-card,.formula-card{box-shadow:none}
+  .stat{padding:15px}
+}
+@media(max-width:380px){
+  .crumb{font-size:10px}.crumb span{margin-left:5px}.topbar{gap:5px}.top-actions{gap:5px}
+  .auth-control{max-width:104px}#google-signin-button{transform:scale(.68);width:120px}
+}

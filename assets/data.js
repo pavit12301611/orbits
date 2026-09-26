@@ -1,5 +1,5 @@
 /* Orbit 2.0 — core data: subjects, 50 chapters, formulas, planner templates.
-   No sign-in, no network, no tracking. Everything runs locally. */
+   Study data stays local; Google identity verification is an optional separate Vercel API. */
 const SUBJECTS = {
   Physics:    {icon:'atom',  color:'physics',     tagline:'Understand the world, one concept at a time.'},
   Chemistry:  {icon:'flask', color:'chemistry',   tagline:'Build a strong bond with the fundamentals.'},

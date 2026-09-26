@@ -1,0 +1,12 @@
+{
+  "name": "orbit-study-space",
+  "version": "2.1.0",
+  "private": true,
+  "description": "Orbit NEET and JEE study space with optional Google sign-in verification",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "google-auth-library": "^9.15.1"
+  }
+}

@@ -208,6 +208,6 @@ function resetAll(){modal(`<div class="modal-header"><h2>Reset everything?</h2><
 function showUpdates(){
   modal(`<div class="modal-header"><h2>Your study arsenal.</h2><button class="close" onclick="closeModal()" aria-label="Close updates">×</button></div>
   <div class="reader"><h3>Inside this workspace</h3><p><b>${bankCount()} practice questions</b> across 50 chapters, <b>150 chapter combos</b> (Learn / Drill / Sprint), 6 grand modes including full NEET &amp; JEE mocks, <b>50 study guides</b> with exam traps, spaced-repetition flashcards, formula sheets, a planner with one-click study plans, and a focus timer.</p>
-  <h3>Private by design</h3><p>No sign-in, no servers, no tracking. Everything lives in this browser. Use <b>Backup</b> in Progress to move between devices. This is a starter revision library — pair it with your textbooks and NCERT for the full syllabus.</p></div>
+  <h3>Private by design</h3><p>Study data stays in this browser. Optional Google sign-in only verifies your identity; it does not sync progress. No tracking. Use <b>Backup</b> in Progress to move between devices. This is a starter revision library — pair it with your textbooks and NCERT for the full syllabus.</p></div>
   <div class="modal-footer"><button class="btn" onclick="closeModal()">Let’s keep going ${icon('arrow')}</button></div>`);
 }

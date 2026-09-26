@@ -1,7 +1,7 @@
 {
   "name": "Orbit study space",
   "short_name": "Orbit",
-  "description": "150 study combinations, 400+ questions and 50 guides for NEET & JEE. No sign-in.",
+  "description": "150 study combinations, 400+ questions and 50 guides for NEET & JEE. Local-first with optional Google sign-in.",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#f6f7f2",

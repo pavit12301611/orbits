@@ -1,7 +1,6 @@
 # Orbit — NEET & JEE study space
 
-A fast, private, **zero-dependency** study website: plain HTML, CSS and JavaScript.
-No React, build tools, CDNs, external fonts, accounts or servers. Open it and learn.
+A fast, local-first NEET/JEE study space built with plain HTML, CSS and JavaScript. The study app needs no frontend framework or build step; optional Google sign-in uses a small Vercel serverless API to verify identities securely.
 
 > `orbit-website.zip` is the original v1 archive. The live site is unzipped at the repo root.
 
@@ -40,16 +39,16 @@ serves the same files unchanged.
 - **Dark mode**, mobile-first responsive layout, keyboard accessible, reduced-motion
   friendly.
 
-## No sign-in, no data collection
+## Privacy and Google sign-in
 
-Everything is stored in the browser's `localStorage` on the student's own device.
-There is no account system, backend, tracking pixel or network call of any kind —
-the site works fully offline once loaded. Students moving devices can use
-**Progress → Backup** to export/import a JSON file. Clearing site data erases progress,
-so back up before switching browsers.
+Study progress, bookmarks, tasks and settings are stored in this browser's `localStorage` on this device. Optional Google sign-in verifies your Google identity and displays your account; it does **not** upload or sync study progress. The app's study features continue to work without signing in. Back up via **Progress → Backup** before clearing browser data or switching devices. Google sign-in requires the Vercel API and a Google OAuth client ID described below; the static local preview does not provide sign-in.
 
 This is a **starter revision and practice library**, not the complete NEET/JEE
 syllabus or official previous-year papers. Pair it with textbooks/NCERT.
+
+## Deploy to Vercel + optional Google sign-in
+
+The frontend can still be served as static files. On Vercel, the `api/` functions add optional Google sign-in. Create a Google OAuth **Web application Client ID**, add your Vercel domain as an authorized JavaScript origin, then add `GOOGLE_CLIENT_ID` under **Vercel → Project → Settings → Environment Variables** (for each environment you use) and redeploy. This is a public OAuth client ID, not an API key or client secret. The backend verifies Google ID tokens and keeps the short-lived session in a secure, HttpOnly cookie; tokens are not exposed to browser JavaScript or local storage. See [GOOGLE_AUTH_SETUP.md](GOOGLE_AUTH_SETUP.md) for exact Google Cloud and Vercel steps, local testing, and troubleshooting.
 
 ## Project layout
 
@@ -62,6 +61,7 @@ syllabus or official previous-year papers. Pair it with textbooks/NCERT.
 | `assets/app.js` | State, shell, theme, palette, home, combos browser, library |
 | `assets/app-quiz.js` | Generators, test engine, scoring, mistakes, review |
 | `assets/app-study.js` | Flashcards, formulas, planner, focus, progress, import/export |
+| `assets/auth.js`, `api/` | Optional Google sign-in UI and server-side ID-token verification |
 | `assets/style.css` | Light + dark themes, responsive, print styles |
 | `manifest.webmanifest` | PWA metadata (installable, standalone) |
 
